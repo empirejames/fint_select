@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "胖西 瘦瘦", file: "胖西手寫體 瘦瘦.woff2" },
         { name: "胖西 蓬蓬", file: "胖西手寫體 蓬蓬.woff2" },
         { name: "芫萎", file: "芫萎_Iansui-Regular.ttf" },
-        { name: "華康墨字體", file: "華康墨字體.ttc" },
+        { name: "華康墨字體", file: "華康墨字體_fixed.ttf" },
         { name: "華康娃娃體", file: "華康娃娃體.ttf" },
-        { name: "陈森田", file: "chensentian.woff2" }
+        { name: "陈森田", file: "chen_fixed_final.ttf" }
     ];
 
     // DOM Elements
@@ -30,13 +30,23 @@ document.addEventListener('DOMContentLoaded', () => {
     fonts.forEach((font, index) => {
         if (font.file === "") return; 
         
-        const cssFontName = `CustomFont_${index}`;
+        const cssFontName = `CustomFontV9_${index}`;
         font.cssName = cssFontName;
+        
+        let format = '';
+        const ext = font.file.split('.').pop().toLowerCase();
+        if (ext === 'woff2') format = "format('woff2')";
+        else if (ext === 'woff') format = "format('woff')";
+        else if (ext === 'ttf') format = "format('truetype')";
+        else if (ext === 'otf') format = "format('opentype')";
+        else if (ext === 'ttc') format = "format('collection'), format('truetype')";
+
+        const fileUrl = encodeURI('./src/' + font.file);
         
         cssRules += `
             @font-face {
                 font-family: '${cssFontName}';
-                src: url('./src/${font.file}');
+                src: url('${fileUrl}') ${format};
                 font-display: swap;
             }
         `;
@@ -67,5 +77,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         previewText.style.fontFamily = selectedValue;
         currentFontBadge.textContent = selectedText;
+    });
+
+    // Font loading diagnostics
+    document.fonts.addEventListener('loadingerror', (event) => {
+        const failedFonts = [];
+        for (const fontFace of event.fontfaces) {
+            failedFonts.push(fontFace.family);
+        }
+        if (failedFonts.length > 0) {
+            previewText.value = "字體載入失敗 (被瀏覽器封鎖): " + failedFonts.join(", ");
+        }
     });
 });
