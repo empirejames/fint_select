@@ -33,15 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const cssFontName = `CustomFont_${index}`;
         font.cssName = cssFontName;
         
-        let formatStr = '';
-        if (font.file.endsWith('.woff2')) formatStr = " format('woff2')";
-        else if (font.file.endsWith('.ttc')) formatStr = " format('collection')";
-        else if (font.file.endsWith('.ttf')) formatStr = " format('truetype')";
-        
         cssRules += `
             @font-face {
                 font-family: '${cssFontName}';
-                src: url('./src/${encodeURIComponent(font.file)}')${formatStr};
+                src: url('./src/${encodeURIComponent(font.file)}');
                 font-display: swap;
             }
         `;
@@ -70,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedValue = e.target.value;
         const selectedText = e.target.options[e.target.selectedIndex].text;
         
-        previewText.style.fontFamily = selectedValue;
+        previewText.style.fontFamily = selectedValue === 'inherit' ? selectedValue : `'${selectedValue}'`;
         currentFontBadge.textContent = selectedText;
     });
 });
