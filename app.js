@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "芫萎", file: "芫萎_Iansui-Regular.ttf" },
         { name: "華康墨字體", file: "華康墨字體.ttc" },
         { name: "華康娃娃體", file: "華康娃娃體.ttf" },
-        { name: "陈森田", file: "陈森田.ttf" }
+        { name: "陈森田", file: "陈森田.woff2" }
     ];
 
     // DOM Elements
