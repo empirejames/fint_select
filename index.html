@@ -10,22 +10,16 @@
 <body>
     <header class="top-bar">
         <h1>字體預覽</h1>
+        <div class="input-container">
+            <textarea id="previewText" placeholder="輸入預覽文字...">張佑謙&#13;&#10;Camden</textarea>
+        </div>
     </header>
 
-    <main class="editor-area">
-        <textarea id="previewText" placeholder="點擊此處輸入文字..."></textarea>
-    </main>
-
-    <footer class="bottom-toolbar">
-        <div class="toolbar-row">
-            <div class="custom-select-wrapper">
-                <select id="fontSelect">
-                    <!-- Options populated by JS -->
-                </select>
-            </div>
-            <span id="currentFontBadge" class="badge">預設字體</span>
+    <main class="grid-area">
+        <div id="fontGrid" class="font-grid">
+            <!-- Cards populated by JS -->
         </div>
-    </footer>
+    </main>
 
     <!-- Loading overlay -->
     <div id="loadingOverlay" class="loading-overlay">
@@ -33,6 +27,6 @@
         <p>載入中...</p>
     </div>
 
-    <script src="app.js?v=9"></script>
+    <script src="app.js?v=10"></script>
 </body>
 </html>

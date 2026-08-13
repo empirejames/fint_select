@@ -18,9 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // DOM Elements
-    const fontSelect = document.getElementById('fontSelect');
     const previewText = document.getElementById('previewText');
-    const currentFontBadge = document.getElementById('currentFontBadge');
+    const fontGrid = document.getElementById('fontGrid');
     const loadingOverlay = document.getElementById('loadingOverlay');
 
     // 1. Generate @font-face rules dynamically
@@ -55,12 +54,26 @@ document.addEventListener('DOMContentLoaded', () => {
     styleSheet.textContent = cssRules;
     document.head.appendChild(styleSheet);
 
-    // 2. Populate the Select Dropdown
+    // 2. Generate Grid Cards
     fonts.forEach((font, index) => {
-        const option = document.createElement('option');
-        option.value = font.cssName || "inherit";
-        option.textContent = font.name;
-        fontSelect.appendChild(option);
+        // Skip default font if it doesn't have a file, or render it?
+        // Let's render all fonts including default.
+        const card = document.createElement('div');
+        card.className = 'font-card';
+        card.style.fontFamily = font.cssName || "inherit";
+        
+        const indexDiv = document.createElement('div');
+        indexDiv.className = 'font-index';
+        // Display index starting from 1
+        indexDiv.textContent = index + 1;
+        
+        const previewDiv = document.createElement('div');
+        previewDiv.className = 'font-preview';
+        previewDiv.textContent = previewText.value;
+        
+        card.appendChild(indexDiv);
+        card.appendChild(previewDiv);
+        fontGrid.appendChild(card);
     });
 
     // Hide loading overlay
@@ -70,13 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Event Listeners
     
-    // Update Font Family
-    fontSelect.addEventListener('change', (e) => {
-        const selectedValue = e.target.value;
-        const selectedText = e.target.options[e.target.selectedIndex].text;
-        
-        previewText.style.fontFamily = selectedValue;
-        currentFontBadge.textContent = selectedText;
+    // Update all previews on input
+    previewText.addEventListener('input', (e) => {
+        const newText = e.target.value;
+        const previews = document.querySelectorAll('.font-preview');
+        previews.forEach(p => {
+            p.textContent = newText;
+        });
     });
 
     // Font loading diagnostics
@@ -86,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             failedFonts.push(fontFace.family);
         }
         if (failedFonts.length > 0) {
-            previewText.value = "字體載入失敗 (被瀏覽器封鎖): " + failedFonts.join(", ");
+            console.error("字體載入失敗 (被瀏覽器封鎖): " + failedFonts.join(", "));
         }
     });
 });
