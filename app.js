@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cssRules += `
             @font-face {
                 font-family: '${cssFontName}';
-                src: url('./src/${encodeURIComponent(font.file)}');
+                src: url('./src/${font.file}');
                 font-display: swap;
             }
         `;
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedValue = e.target.value;
         const selectedText = e.target.options[e.target.selectedIndex].text;
         
-        previewText.style.fontFamily = selectedValue === 'inherit' ? selectedValue : `'${selectedValue}'`;
+        previewText.style.fontFamily = selectedValue;
         currentFontBadge.textContent = selectedText;
     });
 });
