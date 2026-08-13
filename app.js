@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cssRules += `
             @font-face {
                 font-family: '${cssFontName}';
-                src: url('./src/${encodeURIComponent(font.file)}') format('truetype');
+                src: url('./src/${encodeURIComponent(font.file)}');
                 font-display: swap;
             }
         `;
