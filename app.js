@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "芫萎", file: "芫萎_Iansui-Regular.ttf" },
         { name: "華康墨字體", file: "華康墨字體.ttc" },
         { name: "華康娃娃體", file: "華康娃娃體.ttf" },
-        { name: "陈森田", file: "陈森田.woff2" }
+        { name: "陈森田", file: "chensentian.woff2" }
     ];
 
     // DOM Elements
@@ -33,10 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const cssFontName = `CustomFont_${index}`;
         font.cssName = cssFontName;
         
+        let formatStr = '';
+        if (font.file.endsWith('.woff2')) formatStr = " format('woff2')";
+        else if (font.file.endsWith('.ttc')) formatStr = " format('collection')";
+        else if (font.file.endsWith('.ttf')) formatStr = " format('truetype')";
+        
         cssRules += `
             @font-face {
                 font-family: '${cssFontName}';
-                src: url('./src/${encodeURIComponent(font.file)}');
+                src: url('./src/${encodeURIComponent(font.file)}')${formatStr};
                 font-display: swap;
             }
         `;
