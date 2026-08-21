@@ -1,20 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const fonts = [
-        { name: "預設字體", file: "" },
-        { name: "灵动指书", file: "lingdong-zhishu  灵动指书手机字体  人丑多读书.ttf" },
-        { name: "口力口體", file: "口力口體.ttf" },
-        { name: "愛ㄉ粗麵體", file: "愛ㄉ粗麵體.ttf" },
-        { name: "注音 SekiGothic", file: "注音體_BpmfGenSekiGothic-B.ttf" },
-        { name: "注音 SenRounded", file: "注音體_BpmfGenSenRounded-B.ttf" },
-        { name: "粒線體 Mono", file: "粒線體_lihsianti-monospaced.ttf" },
-        { name: "粒線體 Prop", file: "粒線體_lihsianti-proportional.ttf" },
-        { name: "粗線體", file: "粗線體 台湾粗线体.ttf" },
-        { name: "胖西 瘦瘦", file: "胖西手寫體 瘦瘦.woff2" },
-        { name: "胖西 蓬蓬", file: "胖西手寫體 蓬蓬.woff2" },
-        { name: "芫萎", file: "芫萎_Iansui-Regular.ttf" },
-        { name: "華康墨字體", file: "華康墨字體_fixed.ttf" },
-        { name: "華康娃娃體", file: "華康娃娃體.ttf" },
-        { name: "陈森田", file: "chen_fixed_final.ttf" }
+        { name: "字體A", file: "字體A.ttf" },
+        { name: "字體B", file: "字體B.ttf" },
+        { name: "字體C", file: "字體C.ttf" },
+        { name: "字體D", file: "字體D.ttf" },
+        { name: "字體E", file: "字體E.ttf" },
+        { name: "字體F", file: "字體F.ttf" },
+        { name: "字體G", file: "字體G.ttf" },
+        { name: "字體H", file: "字體H.ttf" },
+        { name: "字體I", file: "字體I.ttf" },
+        { name: "字體J", file: "字體J.ttf" },
+        { name: "字體K", file: "字體K.ttf" },
+        { name: "字體L", file: "字體L.TTF" },
+        { name: "字體M", file: "字體M.ttf" },
+        { name: "字體N", file: "字體N.ttf" }
     ];
 
     // DOM Elements
@@ -64,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const indexDiv = document.createElement('div');
         indexDiv.className = 'font-index';
-        // Display index starting from 1
-        indexDiv.textContent = index + 1;
+        // Display index as A, B, C...
+        indexDiv.textContent = String.fromCharCode(65 + index);
         
         const previewDiv = document.createElement('div');
         previewDiv.className = 'font-preview';
