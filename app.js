@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const indexDiv = document.createElement('div');
         indexDiv.className = 'font-index';
-        // Display index as A, B, C...
-        indexDiv.textContent = String.fromCharCode(65 + index);
+        // Display index as 字體A, 字體B, 字體C...
+        indexDiv.textContent = "字體" + String.fromCharCode(65 + index);
         
         const previewDiv = document.createElement('div');
         previewDiv.className = 'font-preview';
