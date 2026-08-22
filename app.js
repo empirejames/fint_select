@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (ext === 'otf') format = "format('opentype')";
         else if (ext === 'ttc') format = "format('collection'), format('truetype')";
 
-        const fileUrl = encodeURI('./src/' + font.file) + '?v=17';
+        const fileUrl = encodeURI('./src/' + font.file) + '?v=18';
         
         cssRules += `
             @font-face {
