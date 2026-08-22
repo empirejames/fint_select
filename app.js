@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "字體I", file: "字體I.woff2" },
         { name: "字體J", file: "字體J.woff2" },
         { name: "字體K", file: "字體K.ttf" },
-        { name: "字體L", file: "字體L.ttc" },
+        { name: "字體L", file: "字體L.ttf" },
         { name: "字體M", file: "字體M.ttf" },
         { name: "字體N", file: "字體N.ttf" }
     ];
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (ext === 'otf') format = "format('opentype')";
         else if (ext === 'ttc') format = "format('collection'), format('truetype')";
 
-        const fileUrl = encodeURI('./src/' + font.file) + '?v=18';
+        const fileUrl = encodeURI('./src/' + font.file) + '?v=19';
         
         cssRules += `
             @font-face {
